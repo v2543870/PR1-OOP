@@ -1,0 +1,25 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    double d1, d2, S;
+
+    cout << "Обчислення площі ромба\n\n";
+
+    cout << "d1 = ";
+    cin >> d1;
+
+    cout << "d2 = ";
+    cin >> d2;
+
+    S = d1 * d2 / 2;
+
+    cout << fixed << setprecision(2);
+    cout << "\nПерша діагональ: " << d1 << endl;
+    cout << "Друга діагональ: " << d2 << endl;
+    cout << "Площа ромба: " << S << endl;
+
+    return 0;
+}
