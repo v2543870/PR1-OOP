@@ -26,7 +26,7 @@ int main() {
     for (double x = a; x <= b + 1e-9; x += h) {
         double y = cos(x * x) + sin(x) * sin(x) + 2;
 
-        cout << "При x = " << fixed << setprecision(4) << x
+        cout << "При x = " << fixed << setprecision(4) << x 
              << ", y = " << y << endl;
     }
 
