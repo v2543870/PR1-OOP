@@ -1,0 +1,38 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    float nf, mf;
+    double nd, md;
+
+    cout << "Введіть n: ";
+    cin >> nf;
+
+    cout << "Введіть m: ";
+    cin >> mf;
+
+    float tempF = nf;
+    float resultF = tempF - mf;
+    nf++;
+
+    cout << "\nРезультат для float:  "
+         << fixed << setprecision(10) << resultF << endl;
+
+    cout << "\nВведіть n: ";
+    cin >> nd;
+
+    cout << "Введіть m: ";
+    cin >> md;
+
+    double tempD = nd;
+    double resultD = tempD - md;
+    nd++;
+
+    cout << "\nРезультат для double: "
+         << fixed << setprecision(10) << resultD << endl;
+
+    return 0;
+}
