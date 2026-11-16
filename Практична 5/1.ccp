@@ -1,64 +1,53 @@
 #include <iostream>
-#include <string>
-#include <locale>
 using namespace std;
 
 int main() {
-    locale::global(locale(""));
+    char s[500];
 
-    wstring s;
-    wcout << L"Введіть речення: ";
-    getline(wcin, s);
+    cout << "Введіть речення: ";
+    cin.getline(s, 500);
 
-    int maxA = 0;
+    int max = 0;
+    int kilkist = 0;
 
-    for (int i = 0; i < s.length(); ) {
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == 'a')
+            kilkist++;
 
-        while (i < s.length() && s[i] == L' ')
-            i++;
+        if (s[i] == ' ') {
+            if (kilkist > max)
+                max = kilkist;
 
-        if (i >= s.length())
-            break;
-
-        int countA = 0;
-
-        while (i < s.length() && s[i] != L' ') {
-            if (s[i] == L'а')
-                countA++;
-
-            i++;
+            kilkist = 0;
         }
-
-        if (countA > maxA)
-            maxA = countA;
     }
 
-    wcout << L"Максимальна кількість слів з буквою 'а': " << maxA << endl;
+    if (kilkist > max)
+        max = kilkist;
 
-    wcout << L"Слова з максимальною кількістю 'а': ";
+    cout << "Слова з максимальною кількістю букв a: ";
 
-    for (int i = 0; i < s.length(); ) {
+    int pochatok = 0;
+    kilkist = 0;
 
-        while (i < s.length() && s[i] == L' ')
-            i++;
+    for (int i = 0; ; i++) {
+        if (s[i] == 'a')
+            kilkist++;
 
-        if (i >= s.length())
-            break;
+        if (s[i] == ' ' || s[i] == '\0') {
+            if (kilkist == max) {
+                for (int j = pochatok; j < i; j++)
+                    cout << s[j];
 
-        wstring word = L"";
-        int countA = 0;
+                cout << " ";
+            }
 
-        while (i < s.length() && s[i] != L' ') {
-            word += s[i];
-
-            if (s[i] == L'а')
-                countA++;
-
-            i++;
+            kilkist = 0;
+            pochatok = i + 1;
         }
 
-        if (countA == maxA)
-            wcout << word << L" ";
+        if (s[i] == '\0')
+            break;
     }
 
     return 0;
